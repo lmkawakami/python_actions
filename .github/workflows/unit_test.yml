@@ -1,0 +1,45 @@
+name: Testes Unitários
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          cache: 'pip'
+          cache-dependecy-path: '**/requirements*.txt'
+          
+      - name: Install dependencies
+        run: |
+          python --version
+          pip --version
+          echo Instalando dependencias
+          cd app
+          python -m pip install -r requirements.txt
+          pip install pytest
+          pip install pytest-cov
+          pip install pytest-html
+          
+      - name: Run testes unitários
+        continue-on-error: true
+        run: |
+          cd app
+          python -m pytest --verbose --color=yes --html=pytest_report.html --junitxml="result.xml"
+          
+      - name: JUnit Report Action
+        uses: mikepenz/action-junit-report@v3.5.2
+        if: always()
+        with:
+          report_paths: "app/result.xml"
+          
+      - name: Configure Github Artifacts Path
+        uses: actions/upload-artifact@v3
+        with:
+          name: report
+          path: app/pytest_report.thml
