@@ -5,3 +5,7 @@
 
 - Time badge:
 ![](https://byob.yarr.is/RubbaBoy/Example/time)
+
+- Time badge 2:
+![Time](https://byob.yarr.is/RubbaBoy/BYOBTest/time)
+
