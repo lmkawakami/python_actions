@@ -29,4 +29,4 @@ jobs:
       - name: Run testes unitários
         run: |
           cd app
-          python -m pytest --cov-report term-missing --cov=./hipotenusa -vv
+          python -m pytest --cov-report term-missing --cov=./calculadora -vv
