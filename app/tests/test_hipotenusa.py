@@ -7,3 +7,9 @@ class TestHipotenusa(unittest.TestCase):
             hipotenusa(3, 4),
             5
         )
+
+    def test_b(self):
+        self.assertEqual(
+            hipotenusa(3, 4),
+            6
+        )
