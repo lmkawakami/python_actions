@@ -41,7 +41,6 @@ jobs:
     - name: Run reports
       continue-on-error: true
       run: |
-        cd app
         echo gerando report html
         python -m mutmut html
         rm -rf html_reports/mutmut
