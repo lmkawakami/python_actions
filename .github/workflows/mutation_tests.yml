@@ -31,7 +31,7 @@ jobs:
       run: |
         cd app
         echo iniciando testes
-        mutmut run --paths-to-mutate app/calculadora --tests-dir app/tests --simple-output
+        python -m mutmut run --paths-to-mutate app/calculadora --tests-dir app/tests --simple-output
         echo fim
 
     - name: Run reports
@@ -39,11 +39,11 @@ jobs:
       run: |
         cd app
         echo gerando report html
-        mutmut html
+        python -m mutmut html
         rm -rf html_reports/mutmut
         mv html html_reports/mutmut
         echo gerando report xml
-        mutmut junitxml > html_reports/mutmut/mutmut-results.xml
+        python -m mutmut junitxml > html_reports/mutmut/mutmut-results.xml
         rm .mutmut-cache
         echo finalizando relatorio
 
