@@ -13,3 +13,9 @@ class TestHipotenusa(unittest.TestCase):
             hipotenusa(5, 12),
             13
         )
+
+    def test_c(self):
+        self.assertEqual(
+            hipotenusa(-5, 12),
+            13
+        )
