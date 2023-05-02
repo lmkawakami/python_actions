@@ -25,6 +25,7 @@ jobs:
         python -m pip install -r requirements.txt
         pip install mutmut
         pip install junit2html
+        pip install requests
 
     - name: Run testes mutantes
       continue-on-error: true
