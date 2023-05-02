@@ -30,7 +30,6 @@ jobs:
     - name: Run testes mutantes
       continue-on-error: true
       run: |
-        cd app
         echo iniciando testes
         python -m mutmut run --paths-to-mutate app/calculadora --tests-dir app/tests --simple-output
         echo fim
