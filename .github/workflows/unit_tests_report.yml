@@ -27,24 +27,42 @@ jobs:
         pip install pytest
         pip install pytest-cov
         pip install pytest-html
+        pip install requests
+
+    - name: Delete previous report
+      run: |
+        rm -rf html_reports/unit_test
 
     - name: Generate coverage report
       run: |
-        python -m pytest ./app/tests --cov-report html:coverage_html --cov=./app/calculadora -vv
+        python -m pytest ./app/tests --cov-report html:html_reports/unit_test --cov-report xml:html_reports/unit_test/cov.xml --cov=./app/calculadora -vv
         
     - name: Add unit tests run output
       run: |
-        echo "<hr><pre style='font-size: small; padding: 1em'>" >> coverage_html/index.html
-        python -m pytest ./app/tests --cov-report term-missing --cov=./app/calculadora -vv >> coverage_html/index.html
-        echo "</pre>" >> coverage_html/index.html
-        
+        echo "<hr><pre style='font-size: small; padding: 1em'>" >> html_reports/unit_test/index.html
+        python -m pytest ./app/tests --cov-report term-missing --cov=./app/calculadora -vv >> html_reports/unit_test/index.html
+        echo "</pre>" >> html_reports/unit_test/index.html
+
+    - name: Add unit test run badge
+      run: |
+        mkdir -p html_reports/badges
+        if python -m pytest ./app/tests > /dev/null; then
+            python ./html_reports/scripts/create_badge.py --text unit-tests --value passing --color green --file_name ./html_reports/badges/unit_tests_run_badge.svg
+        else
+            python ./html_reports/scripts/create_badge.py --text unit-tests --value not-passing --color red --file_name ./html_reports/badges/unit_tests_run_badge.svg
+        fi
+
+    - name: Add unit test coverage badge
+      run: |
+        mkdir -p html_reports/badges
+        python ./html_reports/scripts/create_badge.py --text coverage --value `python html_reports/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
+
     - name: Commit changes
       run: |
-        
         git config --global user.email "no-reply@github.com"
         git config --global user.name "GitHub Actions"
-        rm coverage_html/.gitignore 
-        git add coverage_html/
+        rm html_reports/unit_test/.gitignore 
+        git add html_reports/
         git commit -m "update coverage report"
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git push
