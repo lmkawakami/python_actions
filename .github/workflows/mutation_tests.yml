@@ -31,7 +31,11 @@ jobs:
       continue-on-error: true
       run: |
         echo iniciando testes
-        python -m mutmut run --paths-to-mutate app/calculadora --tests-dir app/tests --simple-output
+        if python -m mutmut run --paths-to-mutate app/calculadora --tests-dir app/tests --simple-output; then
+          echo sucesso
+        else
+          echo erro
+        fi
         echo fim
 
     - name: Run reports
