@@ -1,0 +1,52 @@
+name: Unit Tests Report
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'
+        cache: 'pip'
+        cache-dependency-path: '**/requirements*.txt'
+        
+    - name: Install dependencies
+      run: |
+        python --version
+        pip --version
+        echo Instalando dependencias
+        cd app
+        python -m pip install -r requirements.txt
+        pip install pytest
+        pip install pytest-cov
+        pip install pytest-html
+
+    - name: Generate coverage report
+      run: |
+        python -m pytest ./app/tests --cov-report html:coverage_html --cov=./app/calculadora -vv
+        
+    - name: Add unit tests run output
+      run: |
+        echo "<hr><pre style='font-size: small; padding: 1em'>" >> coverage_html/index.html
+        python -m pytest ./app/tests --cov-report term-missing --cov=./app/calculadora -vv >> coverage_html/index.html
+        echo "</pre>" >> coverage_html/index.html
+        
+    - name: Commit changes
+      run: |
+        
+        git config --global user.email "no-reply@github.com"
+        git config --global user.name "GitHub Actions"
+        rm coverage_html/.gitignore 
+        git add coverage_html/
+        git commit -m "update coverage report"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
