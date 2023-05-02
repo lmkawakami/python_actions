@@ -45,6 +45,7 @@ jobs:
         echo gerando report html
         python -m mutmut html
         rm -rf html_reports/mutmut
+        mkdir -p html_reports/mutmut
         mv html html_reports/mutmut
         echo gerando report xml
         python -m mutmut junitxml > html_reports/mutmut/mutmut-results.xml
