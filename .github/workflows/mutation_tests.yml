@@ -57,15 +57,15 @@ jobs:
         fi
 
     - name: Commit changes
-    run: |
-      git config --global user.email "no-reply@github.com"
-      git config --global user.name "GitHub Actions"
-      git add html_reports/
-      git commit -m "update coverage report"
-      git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-      git push
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.email "no-reply@github.com"
+        git config --global user.name "GitHub Actions"
+        git add html_reports/
+        git commit -m "update coverage report"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # - name: Configure Github Artifacts Path
     #   uses: actions/upload-artifact@v3
