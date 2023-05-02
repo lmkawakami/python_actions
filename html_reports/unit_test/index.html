@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="icon" sizes="32x32" href="favicon_32.png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="coverage_html.js" defer></script>
+</head>
+<body class="indexfile">
+<header>
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">86%</span>
+        </h1>
+        <aside id="help_panel_wrapper">
+            <input id="help_panel_state" type="checkbox">
+            <label for="help_panel_state">
+                <img id="keyboard_icon" src="keybd_closed.png" alt="Show/hide keyboard shortcuts" />
+            </label>
+            <div id="help_panel">
+                <p class="legend">Shortcuts on this page</p>
+                <div class="keyhelp">
+                    <p>
+                        <kbd>n</kbd>
+                        <kbd>s</kbd>
+                        <kbd>m</kbd>
+                        <kbd>x</kbd>
+                        <kbd>c</kbd>
+                        &nbsp; change column sorting
+                    </p>
+                    <p>
+                        <kbd>[</kbd>
+                        <kbd>]</kbd>
+                        &nbsp; prev/next file
+                    </p>
+                    <p>
+                        <kbd>?</kbd> &nbsp; show/hide this help
+                    </p>
+                </div>
+            </div>
+        </aside>
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+        <p class="text">
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.2.5">coverage.py v7.2.5</a>,
+            created at 2023-05-02 04:44 +0000
+        </p>
+    </div>
+</header>
+<main id="index">
+    <table class="index" data-sortable>
+        <thead>
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left" aria-sort="none" data-shortcut="n">Module</th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="s">statements</th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="m">missing</th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="x">excluded</th>
+                <th class="right" aria-sort="none" data-shortcut="c">coverage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="file">
+                <td class="name left"><a href="d_73c40b9df35d056a_hipotenusa_py.html">app/calculadora/hipotenusa.py</a></td>
+                <td>7</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="right" data-ratio="6 7">86%</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>7</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="right" data-ratio="6 7">86%</td>
+            </tr>
+        </tfoot>
+    </table>
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</main>
+<footer>
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.2.5">coverage.py v7.2.5</a>,
+            created at 2023-05-02 04:44 +0000
+        </p>
+    </div>
+    <aside class="hidden">
+        <a id="prevFileLink" class="nav" href="d_73c40b9df35d056a_hipotenusa_py.html"/>
+        <a id="nextFileLink" class="nav" href="d_73c40b9df35d056a_hipotenusa_py.html"/>
+        <button type="button" class="button_prev_file" data-shortcut="["/>
+        <button type="button" class="button_next_file" data-shortcut="]"/>
+        <button type="button" class="button_show_hide_help" data-shortcut="?"/>
+    </aside>
+</footer>
+</body>
+</html>
+<hr><pre style='font-size: small; padding: 1em'>
+============================= test session starts ==============================
+platform linux -- Python 3.7.16, pytest-7.3.1, pluggy-1.0.0 -- /opt/hostedtoolcache/Python/3.7.16/x64/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.7.16', 'Platform': 'Linux-5.15.0-1036-azure-x86_64-with-debian-bookworm-sid', 'Packages': {'pytest': '7.3.1', 'pluggy': '1.0.0'}, 'Plugins': {'cov': '4.0.0', 'metadata': '2.0.4', 'html': '3.2.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-11-jdk-amd64'}
+rootdir: /home/runner/work/python_actions/python_actions
+plugins: cov-4.0.0, metadata-2.0.4, html-3.2.0
+collecting ... collected 2 items
+
+app/tests/test_hipotenusa.py::TestHipotenusa::test_a PASSED              [ 50%]
+app/tests/test_hipotenusa.py::TestHipotenusa::test_b PASSED              [100%]
+
+---------- coverage: platform linux, python 3.7.16-final-0 -----------
+Name                            Stmts   Miss  Cover   Missing
+-------------------------------------------------------------
+app/calculadora/hipotenusa.py       7      1    86%   9
+-------------------------------------------------------------
+TOTAL                               7      1    86%
+
+
+============================== 2 passed in 0.03s ===============================
+</pre>
