@@ -11,7 +11,7 @@
 <header>
     <div class="content">
         <h1>Coverage report:
-            <span class="pc_cov">100%</span>
+            <span class="pc_cov">86%</span>
         </h1>
         <aside id="help_panel_wrapper">
             <input id="help_panel_state" type="checkbox">
@@ -45,7 +45,7 @@
         </form>
         <p class="text">
             <a class="nav" href="https://coverage.readthedocs.io/en/7.2.5">coverage.py v7.2.5</a>,
-            created at 2023-05-02 05:05 +0000
+            created at 2023-05-02 06:15 +0000
         </p>
     </div>
 </header>
@@ -64,18 +64,18 @@
             <tr class="file">
                 <td class="name left"><a href="d_73c40b9df35d056a_hipotenusa_py.html">app/calculadora/hipotenusa.py</a></td>
                 <td>7</td>
+                <td>1</td>
                 <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="7 7">100%</td>
+                <td class="right" data-ratio="6 7">86%</td>
             </tr>
         </tbody>
         <tfoot>
             <tr class="total">
                 <td class="name left">Total</td>
                 <td>7</td>
+                <td>1</td>
                 <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="7 7">100%</td>
+                <td class="right" data-ratio="6 7">86%</td>
             </tr>
         </tfoot>
     </table>
@@ -87,7 +87,7 @@
     <div class="content">
         <p>
             <a class="nav" href="https://coverage.readthedocs.io/en/7.2.5">coverage.py v7.2.5</a>,
-            created at 2023-05-02 05:05 +0000
+            created at 2023-05-02 06:15 +0000
         </p>
     </div>
     <aside class="hidden">
@@ -100,3 +100,25 @@
 </footer>
 </body>
 </html>
+<hr><pre style='font-size: small; padding: 1em'>
+============================= test session starts ==============================
+platform linux -- Python 3.7.16, pytest-7.3.1, pluggy-1.0.0 -- /opt/hostedtoolcache/Python/3.7.16/x64/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.7.16', 'Platform': 'Linux-5.15.0-1036-azure-x86_64-with-debian-bookworm-sid', 'Packages': {'pytest': '7.3.1', 'pluggy': '1.0.0'}, 'Plugins': {'cov': '4.0.0', 'metadata': '2.0.4', 'html': '3.2.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-11-jdk-amd64'}
+rootdir: /home/runner/work/python_actions/python_actions
+plugins: cov-4.0.0, metadata-2.0.4, html-3.2.0
+collecting ... collected 2 items
+
+app/tests/test_hipotenusa.py::TestHipotenusa::test_a PASSED              [ 50%]
+app/tests/test_hipotenusa.py::TestHipotenusa::test_b PASSED              [100%]
+
+---------- coverage: platform linux, python 3.7.16-final-0 -----------
+Name                            Stmts   Miss  Cover   Missing
+-------------------------------------------------------------
+app/calculadora/hipotenusa.py       7      1    86%   9
+-------------------------------------------------------------
+TOTAL                               7      1    86%
+
+
+============================== 2 passed in 0.03s ===============================
+</pre>
