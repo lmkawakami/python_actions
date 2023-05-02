@@ -10,15 +10,15 @@ mutation testing report:
 
 unit tests run badge:
 
-![Alt text](./html_reports/badges/unit_tests_run_badge.svg)
+![Unit tests run](./html_reports/badges/unit_tests_run_badge.svg)
 
 unit tests coverage badge:
 
-![Alt text](./html_reports/badges/unit_tests_coverage_badge.svg)
+![Code coverage](./html_reports/badges/unit_tests_coverage_badge.svg)
 
 mutation tests badge:
 
-![Alt text](./html_reports/badges/mutmut_score_badge.svg)
+![Mutation tests score](./html_reports/badges/mutmut_score_badge.svg)
 
 
 
