@@ -10,6 +10,6 @@ class TestHipotenusa(unittest.TestCase):
 
     def test_b(self):
         self.assertEqual(
-            hipotenusa(3, 4),
-            6
+            hipotenusa(5, 12),
+            13
         )
