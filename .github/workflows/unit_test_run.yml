@@ -1,5 +1,9 @@
 name: Executar Testes Unitários
-on: push
+
+on:
+  # Runs on pushes targeting any branch other than "pages"
+  push:
+    branches-ignore: ["pages"]
 
 jobs:
   build:
