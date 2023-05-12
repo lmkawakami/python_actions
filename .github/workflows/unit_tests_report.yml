@@ -59,6 +59,9 @@ jobs:
         mkdir -p html_reports/badges
         python ./html_reports/scripts/create_badge.py --text coverage --value `python html_reports/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
 
+    - name: Ceckout to pages
+      run: git checkout pages
+
     - name: Commit changes
       run: |
         git config --global user.email "no-reply@github.com"
