@@ -36,6 +36,7 @@ jobs:
         pip install pytest-cov
         pip install pytest-html
         pip install requests
+        pip install unittest-xml-reporting
 
     # Cleanup previous reports if any
     - name: Delete previous report
