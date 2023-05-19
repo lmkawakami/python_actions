@@ -57,10 +57,10 @@ jobs:
     - name: Calcular score de mutantes
       run: |
         mkdir -p html_reports/badges
-        if python html_reports/scripts/mutmut_score.py > /dev/null; then
-            python ./html_reports/scripts/create_badge.py --text mutmut-score --value `python html_reports/scripts/mutmut_score.py` --color blue --file_name ./html_reports/badges/mutmut_score_badge.svg
+        if python .github/workflows/mutmut_score.py > /dev/null; then
+            python ./.github/workflows/create_badge.py --text mutmut-score --value `python .github/workflows/mutmut_score.py` --color blue --file_name ./html_reports/badges/mutmut_score_badge.svg
         else
-            python ./html_reports/scripts/create_badge.py --text mutmut-score --value error --color blue --file_name ./html_reports/badges/mutmut_score_badge.svg
+            python ./.github/workflows/create_badge.py --text mutmut-score --value error --color blue --file_name ./html_reports/badges/mutmut_score_badge.svg
         fi
 
     # - name: Commit changes
