@@ -5,6 +5,17 @@ on:
   push:
     branches-ignore: ["pages"]
 
+env:
+  FOO: BAR
+  VAR1: $GITHUB_REF_NAME
+  VAR2: "$GITHUB_REF_NAME"
+  VAR3: $env.GITHUB_REF_NAME
+  VAR4: "$env.GITHUB_REF_NAME"
+  VAR5: ${{ env.GITHUB_REF_NAME }}
+  VAR6: "${{ env.GITHUB_REF_NAME }}"
+  VAR7: ${{ github.repository }}
+  VAR8: "${{ github.repository }}"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -62,17 +73,55 @@ jobs:
         mkdir -p html_reports/badges
         python ./html_reports/scripts/create_badge.py --text coverage --value `python html_reports/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
 
-    - name: Create clear globs file
+    - name: Print env vars
       run: |
-        printf 'html_reports/**/*\n!.git'> .clear-target-files
+        echo "FOO:"
+        echo "$FOO"
         echo "1:"
-        echo "$GITHUB_REF_NAME"
+        echo "$VAR1"
         echo "2:"
-        echo "$env.GITHUB_REF_NAME"
+        echo "$VAR2"
         echo "3:"
-        echo "${{ env.GITHUB_REF_NAME }}"
+        echo "$VAR3"
         echo "4:"
-        echo ${{ env.GITHUB_REF_NAME }}
+        echo "$VAR4"
+        echo "5:"
+        echo "$VAR5"
+        echo "6:"
+        echo "$VAR6"
+        echo "7:"
+        echo "$VAR7"
+        echo "8:"
+        echo "$VAR8"
+        echo "-----"
+        echo "FOO:"
+        echo "$FOO"
+        echo "local_1:"
+        echo "$LOCAL1"
+        echo "local_2:"
+        echo "$LOCAL2"
+        echo "local_3:"
+        echo "$LOCAL3"
+        echo "local_4:"
+        echo "$LOCAL4"
+        echo "local_5:"
+        echo "$LOCAL5"
+        echo "local_6:"
+        echo "$LOCAL6"
+        echo "local_7:"
+        echo "$LOCAL7"
+        echo "local_8:"
+        echo "$LOCAL8"
+      env:
+        LOCAL_FOO: LOCAL_BAR 
+        LOCAL1: $GITHUB_REF_NAME
+        LOCAL2: "$GITHUB_REF_NAME"
+        LOCAL3: $env.GITHUB_REF_NAME
+        LOCAL4: "$env.GITHUB_REF_NAME"
+        LOCAL5: ${{ env.GITHUB_REF_NAME }}
+        LOCAL6: "${{ env.GITHUB_REF_NAME }}"
+        LOCAL7: ${{ github.repository }}
+        LOCAL8: "${{ github.repository }}"
 
     # Deploy to pages branch
     - name: Deploy
@@ -82,7 +131,7 @@ jobs:
         BRANCH: pages
         FOLDER: html_reports
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TARGET_DIR: $GITHUB_REF_NAME
+        TARGET_DIR: ${{ github.repository }}
 
     # - name: Commit changes
     #   run: |
