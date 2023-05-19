@@ -73,56 +73,6 @@ jobs:
         mkdir -p html_reports/badges
         python ./html_reports/scripts/create_badge.py --text coverage --value `python html_reports/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
 
-    - name: Print env vars
-      run: |
-        echo "FOO:"
-        echo "$FOO"
-        echo "1:"
-        echo "$VAR1"
-        echo "2:"
-        echo "$VAR2"
-        echo "3:"
-        echo "$VAR3"
-        echo "4:"
-        echo "$VAR4"
-        echo "5:"
-        echo "$VAR5"
-        echo "6:"
-        echo "$VAR6"
-        echo "7:"
-        echo "$VAR7"
-        echo "8:"
-        echo "$VAR8"
-        echo "-----"
-        echo "FOO:"
-        echo "$FOO"
-        echo "local_1:"
-        echo "$LOCAL1"
-        echo "local_2:"
-        echo "$LOCAL2"
-        echo "local_3:"
-        echo "$LOCAL3"
-        echo "local_4:"
-        echo "$LOCAL4"
-        echo "local_5:"
-        echo "$LOCAL5"
-        echo "local_6:"
-        echo "$LOCAL6"
-        echo "local_7:"
-        echo "$LOCAL7"
-        echo "local_8:"
-        echo "$LOCAL8"
-      env:
-        LOCAL_FOO: LOCAL_BAR 
-        LOCAL1: $GITHUB_REF_NAME
-        LOCAL2: "$GITHUB_REF_NAME"
-        LOCAL3: $env.GITHUB_REF_NAME
-        LOCAL4: "$env.GITHUB_REF_NAME"
-        LOCAL5: ${{ github.REF_NAME }}
-        LOCAL6: "${{ github.REF_NAME }}"
-        LOCAL7: ${{ github.repository }}
-        LOCAL8: "${{ github.repository }}"
-
     # Deploy to pages branch
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
@@ -131,7 +81,7 @@ jobs:
         BRANCH: pages
         FOLDER: html_reports
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TARGET_DIR: ${{ github.repository }}
+        TARGET_DIR: ${{ github.REF_NAME }}
 
     # - name: Commit changes
     #   run: |
