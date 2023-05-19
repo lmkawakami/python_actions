@@ -81,13 +81,12 @@ jobs:
         mkdir -p code_coverage
         python -m xmlrunner --output-file "code_coverage/unit_test.xml"
         cd ..
-        mv app/code_coverage html_reports/code_coverage
+        mv app/code_coverage html_reports
 
     # Adds unit test summary badge
     - name: Add unit test summary badge
       run: |
         mkdir -p html_reports/badges
-        python ./.github/workflows/scripts/create_badge.py --text coverage --value `python .github/workflows/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
         python ./.github/workflows/scripts/create_badge.py --text unit-tests-summary --value "`python .github/workflows/scripts/unit_test_summary.py`" --color white --file_name ./html_reports/badges/unit_tests_summary_badge.svg
 
     # Install mutation tests dependencies
