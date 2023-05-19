@@ -32,9 +32,9 @@ jobs:
         pip install pytest-html
         pip install requests
 
-    # - name: Delete previous report
-    #   run: |
-    #     rm -rf html_reports/unit_test
+    - name: Delete previous report
+      run: |
+        rm -rf html_reports/unit_test
 
     - name: Generate coverage report
       continue-on-error: true
@@ -63,6 +63,50 @@ jobs:
         mkdir -p html_reports/badges
         python ./.github/workflows/scripts/create_badge.py --text coverage --value `python .github/workflows/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
 
+    - name: Install mutation tests dependencies
+      run: |
+        python --version
+        pip --version
+        echo Instalando dependencias
+        cd app
+        python -m pip install -r requirements.txt
+        pip install mutmut
+        pip install junit2html
+        pip install requests
+
+    - name: Run mutation tests
+      continue-on-error: true
+      run: |
+        echo iniciando testes
+        if python -m mutmut run --paths-to-mutate app/calculadora --tests-dir app/tests --simple-output; then
+          echo sucesso
+        else
+          echo erro
+        fi
+        echo fim
+
+    - name: Generate mutation tests report
+      continue-on-error: true
+      run: |
+        echo gerando report html
+        python -m mutmut html
+        rm -rf html_reports/mutmut
+        mkdir -p html_reports/mutmut
+        mv html html_reports/mutmut
+        echo gerando report xml
+        python -m mutmut junitxml > html_reports/mutmut/mutmut-results.xml
+        rm .mutmut-cache
+        echo finalizando relatorio
+
+    - name: Add mutation tests score badge
+      run: |
+        mkdir -p html_reports/badges
+        if python .github/workflows/scripts/mutmut_score.py > /dev/null; then
+            python ./.github/workflows/scripts/create_badge.py --text mutmut-score --value `python .github/workflows/scripts/mutmut_score.py` --color blue --file_name ./html_reports/badges/mutmut_score_badge.svg
+        else
+            python ./.github/workflows/scripts/create_badge.py --text mutmut-score --value error --color blue --file_name ./html_reports/badges/mutmut_score_badge.svg
+        fi
+
     # Deploy to pages branch
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
@@ -72,15 +116,3 @@ jobs:
         FOLDER: html_reports
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TARGET_DIR: ${{ github.REF_NAME }}
-
-    # - name: Commit changes
-    #   run: |
-    #     git config --global user.email "no-reply@github.com"
-    #     git config --global user.name "GitHub Actions"
-    #     rm html_reports/unit_test/.gitignore 
-    #     git add html_reports/
-    #     git commit -m "update coverage report"
-    #     git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-    #     git push
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
