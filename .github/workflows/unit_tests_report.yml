@@ -39,8 +39,8 @@ jobs:
     - name: Generate coverage report
       continue-on-error: true
       run: |
-        mkdir -p html_reports/unit_test
         if python -m pytest ./app/tests --cov-report html:html_reports/unit_test --cov-report xml:html_reports/unit_test/cov.xml --cov=./app/calculadora -vv; then
+          rm html_reports/unit_test/.gitignore
           echo "enriquecendo relatório de cobertura com output do pytest"
           echo "<hr><pre style='font-size: small; padding: 1em'>" >> html_reports/unit_test/index.html
           python -m pytest ./app/tests --cov-report term-missing --cov=./app/calculadora -vv >> html_reports/unit_test/index.html
