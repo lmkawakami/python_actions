@@ -36,7 +36,6 @@ jobs:
         pip install pytest-cov
         pip install pytest-html
         pip install requests
-        pip install unittest-xml-reporting
 
     # Cleanup previous reports if any
     - name: Delete previous report
@@ -77,17 +76,11 @@ jobs:
     - name: Create unit tests run xml
       continue-on-error: true
       run: |
-        cd app
-        mkdir -p code_coverage
-        python -m xmlrunner --output-file "code_coverage/unit_test.xml"
-        cd ..
-        find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
-        mv app/code_coverage html_reports
+        python -m pytest ./app/tests --junit-xml=html_reports/unit_test.xml
 
     # Adds unit test summary badge
     - name: Add unit test summary badge
       run: |
-        find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
         mkdir -p html_reports/badges
         python ./.github/workflows/scripts/create_badge.py --text unit-tests-summary --value "`python .github/workflows/scripts/unit_test_summary.py`" --color white --file_name ./html_reports/badges/unit_tests_summary_badge.svg
 
