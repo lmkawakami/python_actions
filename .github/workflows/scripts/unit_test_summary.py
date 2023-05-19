@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-tree = ET.parse("./html_reports/code_coverage/unit_test.xml")
+tree = ET.parse("./html_reports/unit_test.xml")
 root = tree.getroot()
 node = root[0]
 errors = int(node.get("errors"))
