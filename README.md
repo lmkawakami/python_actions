@@ -8,6 +8,10 @@ mutation testing report:
 - main: https://htmlpreview.github.io/?https://github.com/lmkawakami/python_actions/blob/main/html_reports/mutmut/html/index.html
 - dev: https://htmlpreview.github.io/?https://github.com/lmkawakami/python_actions/blob/develop/html_reports/mutmut/html/index.html
 
+## Mutmut ![Alt text](./mutmut/badges/unit_tests_run_badge.svg) ![Alt text](./mutmut/badges/unit_tests_coverage_badge.svg) ![Alt text](./mutmut/badges/mutmut_score_badge.svg)
+- [mutmut-report](./mutmut/mutmut/html/index.html)
+- [coverage-report](./mutmut/unit_test/index.html)
+
 ## Develop ![Alt text](./develop/badges/unit_tests_run_badge.svg) ![Alt text](./develop/badges/unit_tests_coverage_badge.svg) ![Alt text](./develop/badges/mutmut_score_badge.svg)
 - [mutmut-report](./develop/mutmut/html/index.html)
 
