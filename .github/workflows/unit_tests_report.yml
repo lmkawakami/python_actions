@@ -82,7 +82,7 @@ jobs:
         BRANCH: pages
         FOLDER: html_reports
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TARGET_DIR: ${{ env.GITHUB_REF_NAME }}
+        TARGET_DIR: $GITHUB_REF_NAME
 
     # - name: Commit changes
     #   run: |
