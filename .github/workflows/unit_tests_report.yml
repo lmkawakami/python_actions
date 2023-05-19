@@ -65,6 +65,12 @@ jobs:
     - name: Create clear globs file
       run: |
         printf 'html_reports/**/*\n!.git'> .clear-target-files
+        echo "$GITHUB_REF"
+        echo "$env.GITHUB_REF"
+        echo "${{ env.GITHUB_REF }}"
+        echo "$GITHUB_REF_NAME"
+        echo "$env.GITHUB_REF_NAME"
+        echo "${{ env.GITHUB_REF_NAME }}"
 
     # Deploy to pages branch
     - name: Deploy
@@ -75,6 +81,7 @@ jobs:
         FOLDER: html_reports
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CLEAR_GLOBS_FILE: ".clear-target-files"
+        TARGET_DIR: ${{ GITHUB_REF }}
 
     # - name: Commit changes
     #   run: |
