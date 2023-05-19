@@ -12,11 +12,11 @@ mutation testing report:
 - [mutmut-report](./mutmut/mutmut/html/index.html)
 - [coverage-report](./mutmut/unit_test/index.html)
 
-## Develop ![](./develop/badges/unit_tests_run_badge.svg) ![](./develop/badges/unit_tests_coverage_badge.svg) ![](./develop/badges/mutmut_score_badge.svg) ![](./mutmut/badges/mutmut_summary_badge.svg) ![](./develop/badges/unit_tests_summary_badge.svg)
+## Develop ![](./develop/badges/unit_tests_run_badge.svg) ![](./develop/badges/unit_tests_coverage_badge.svg) ![](./develop/badges/mutmut_score_badge.svg) ![](./develop/badges/mutmut_summary_badge.svg) ![](./develop/badges/unit_tests_summary_badge.svg)
 - [mutmut-report](./develop/mutmut/html/index.html)
 - [coverage-report](./develop/unit_test/index.html)
 
-## Main ![](./main/badges/unit_tests_run_badge.svg) ![](./main/badges/unit_tests_coverage_badge.svg) ![](./main/badges/mutmut_score_badge.svg) ![](./mutmut/badges/mutmut_summary_badge.svg) ![](./main/badges/unit_tests_summary_badge.svg)
+## Main ![](./main/badges/unit_tests_run_badge.svg) ![](./main/badges/unit_tests_coverage_badge.svg) ![](./main/badges/mutmut_score_badge.svg) ![](./main/badges/mutmut_summary_badge.svg) ![](./main/badges/unit_tests_summary_badge.svg)
 - [mutmut-report](./main/mutmut/html/index.html)
 - [coverage-report](./main/unit_test/index.html)
 
