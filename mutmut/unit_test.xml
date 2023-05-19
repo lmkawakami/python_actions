@@ -1,19 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="1" hostname="fv-az221-714" name="pytest" skipped="0" tests="3" time="0.075" timestamp="2023-05-19T06:03:38.385746"><testcase classname="app.tests.test_hipotenusa.TestHipotenusa" name="test_a" time="0.001" /><testcase classname="app.tests.test_hipotenusa.TestHipotenusa" name="test_b" time="0.001" /><testcase classname="app.tests.test_hipotenusa.TestHipotenusa" name="test_c" time="0.001"><failure message="calculadora.hipotenusa.ErroGeometrico: Erro! Cateto com valor negativo">self = &lt;tests.test_hipotenusa.TestHipotenusa testMethod=test_c&gt;
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="1" hostname="fv-az612-800" name="pytest" skipped="0" tests="3" time="0.057" timestamp="2023-05-19T06:09:47.773504"><testcase classname="app.tests.test_hipotenusa.TestHipotenusa" name="test_a" time="0.001" /><testcase classname="app.tests.test_hipotenusa.TestHipotenusa" name="test_b" time="0.001" /><testcase classname="app.tests.test_hipotenusa.TestHipotenusa" name="test_c" time="0.001"><failure message="Exception: Erro!">self = &lt;tests.test_hipotenusa.TestHipotenusa testMethod=test_c&gt;
 
     def test_c(self):
-        self.assertEqual(
-&gt;           hipotenusa(-5, 12),
-            13
-        )
+&gt;       raise Exception("Erro!")
+E       Exception: Erro!
 
-app/tests/test_hipotenusa.py:19: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-cat_a = -5, cat_b = 12
-
-    def hipotenusa(cat_a: float, cat_b: float):
-        if (cat_a &lt; 0) or (cat_b &lt; 0):
-&gt;           raise ErroGeometrico("Erro! Cateto com valor negativo")
-E           calculadora.hipotenusa.ErroGeometrico: Erro! Cateto com valor negativo
-
-app/calculadora/hipotenusa.py:9: ErroGeometrico</failure></testcase></testsuite></testsuites>
+app/tests/test_hipotenusa.py:18: Exception</failure></testcase></testsuite></testsuites>
