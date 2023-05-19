@@ -62,6 +62,10 @@ jobs:
         mkdir -p html_reports/badges
         python ./html_reports/scripts/create_badge.py --text coverage --value `python html_reports/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
 
+    - name: Create clear globs file
+      run: |
+        printf 'html_reports/**/*\n!.git'> .clear-target-files
+
     # Deploy to pages branch
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
