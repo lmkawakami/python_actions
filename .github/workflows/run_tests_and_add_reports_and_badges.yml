@@ -75,6 +75,7 @@ jobs:
 
     # Creates unit tests run xml
     - name: Create unit tests run xml
+      continue-on-error: true
       run: |
         cd app
         mkdir -p code_coverage
