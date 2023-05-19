@@ -1,0 +1,111 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="6" tests="11" time="0.0">
+	<testsuite disabled="0" errors="0" failures="6" name="mutmut" skipped="0" tests="11" time="0">
+		<testcase file="app/calculadora/hipotenusa.py" line="8" name="Mutant #1">
+			<failure message="bad_survived" type="failure">--- app/calculadora/hipotenusa.py
++++ app/calculadora/hipotenusa.py
+@@ -5,7 +5,7 @@
+     pass
+ 
+ def hipotenusa(cat_a: float, cat_b: float):
+-    if (cat_a &lt; 0) or (cat_b &lt; 0):
++    if (cat_a &lt;= 0) or (cat_b &lt; 0):
+         raise ErroGeometrico(&quot;Erro! Cateto com valor negativo&quot;)
+ 
+     return math.sqrt(cat_a**2 + cat_b**2)
+</failure>
+			<system-out>    if (cat_a &lt; 0) or (cat_b &lt; 0):</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="8" name="Mutant #2">
+			<failure message="bad_survived" type="failure">--- app/calculadora/hipotenusa.py
++++ app/calculadora/hipotenusa.py
+@@ -5,7 +5,7 @@
+     pass
+ 
+ def hipotenusa(cat_a: float, cat_b: float):
+-    if (cat_a &lt; 0) or (cat_b &lt; 0):
++    if (cat_a &lt; 1) or (cat_b &lt; 0):
+         raise ErroGeometrico(&quot;Erro! Cateto com valor negativo&quot;)
+ 
+     return math.sqrt(cat_a**2 + cat_b**2)
+</failure>
+			<system-out>    if (cat_a &lt; 0) or (cat_b &lt; 0):</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="8" name="Mutant #3">
+			<failure message="bad_survived" type="failure">--- app/calculadora/hipotenusa.py
++++ app/calculadora/hipotenusa.py
+@@ -5,7 +5,7 @@
+     pass
+ 
+ def hipotenusa(cat_a: float, cat_b: float):
+-    if (cat_a &lt; 0) or (cat_b &lt; 0):
++    if (cat_a &lt; 0) or (cat_b &lt;= 0):
+         raise ErroGeometrico(&quot;Erro! Cateto com valor negativo&quot;)
+ 
+     return math.sqrt(cat_a**2 + cat_b**2)
+</failure>
+			<system-out>    if (cat_a &lt; 0) or (cat_b &lt; 0):</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="8" name="Mutant #4">
+			<failure message="bad_survived" type="failure">--- app/calculadora/hipotenusa.py
++++ app/calculadora/hipotenusa.py
+@@ -5,7 +5,7 @@
+     pass
+ 
+ def hipotenusa(cat_a: float, cat_b: float):
+-    if (cat_a &lt; 0) or (cat_b &lt; 0):
++    if (cat_a &lt; 0) or (cat_b &lt; 1):
+         raise ErroGeometrico(&quot;Erro! Cateto com valor negativo&quot;)
+ 
+     return math.sqrt(cat_a**2 + cat_b**2)
+</failure>
+			<system-out>    if (cat_a &lt; 0) or (cat_b &lt; 0):</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="8" name="Mutant #5">
+			<failure message="bad_survived" type="failure">--- app/calculadora/hipotenusa.py
++++ app/calculadora/hipotenusa.py
+@@ -5,7 +5,7 @@
+     pass
+ 
+ def hipotenusa(cat_a: float, cat_b: float):
+-    if (cat_a &lt; 0) or (cat_b &lt; 0):
++    if (cat_a &lt; 0) and (cat_b &lt; 0):
+         raise ErroGeometrico(&quot;Erro! Cateto com valor negativo&quot;)
+ 
+     return math.sqrt(cat_a**2 + cat_b**2)
+</failure>
+			<system-out>    if (cat_a &lt; 0) or (cat_b &lt; 0):</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="9" name="Mutant #6">
+			<failure message="bad_survived" type="failure">--- app/calculadora/hipotenusa.py
++++ app/calculadora/hipotenusa.py
+@@ -6,7 +6,7 @@
+ 
+ def hipotenusa(cat_a: float, cat_b: float):
+     if (cat_a &lt; 0) or (cat_b &lt; 0):
+-        raise ErroGeometrico(&quot;Erro! Cateto com valor negativo&quot;)
++        raise ErroGeometrico(&quot;XXErro! Cateto com valor negativoXX&quot;)
+ 
+     return math.sqrt(cat_a**2 + cat_b**2)
+ 
+</failure>
+			<system-out>        raise ErroGeometrico(&quot;Erro! Cateto com valor negativo&quot;)</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="11" name="Mutant #7">
+			<system-out>    return math.sqrt(cat_a**2 + cat_b**2)</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="11" name="Mutant #8">
+			<system-out>    return math.sqrt(cat_a**2 + cat_b**2)</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="11" name="Mutant #9">
+			<system-out>    return math.sqrt(cat_a**2 + cat_b**2)</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="11" name="Mutant #10">
+			<system-out>    return math.sqrt(cat_a**2 + cat_b**2)</system-out>
+		</testcase>
+		<testcase file="app/calculadora/hipotenusa.py" line="11" name="Mutant #11">
+			<system-out>    return math.sqrt(cat_a**2 + cat_b**2)</system-out>
+		</testcase>
+	</testsuite>
+</testsuites>
+
