@@ -10,15 +10,15 @@ mutation testing report:
 
 unit tests run badge:
 
-![Unit tests run](./html_reports/badges/unit_tests_run_badge.svg)
+![Alt text](https://raw.githubusercontent.com/lmkawakami/python_actions/pages/develop/badges/unit_tests_run_badge.svg)
 
 unit tests coverage badge:
 
-![Code coverage](./html_reports/badges/unit_tests_coverage_badge.svg)
+![Alt text](https://raw.githubusercontent.com/lmkawakami/python_actions/pages/develop/badges/unit_tests_coverage_badge.svg)
 
 mutation tests badge:
 
-![Mutation tests score](./html_reports/badges/mutmut_score_badge.svg)
+![Alt text](https://raw.githubusercontent.com/lmkawakami/python_actions/pages/develop/badges/mutmut_score_badge.svg)
 
 
 

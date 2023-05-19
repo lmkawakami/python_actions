@@ -5,6 +5,17 @@ on:
   push:
     branches-ignore: ["pages"]
 
+env:
+  FOO: BAR
+  VAR1: $GITHUB_REF_NAME
+  VAR2: "$GITHUB_REF_NAME"
+  VAR3: $env.GITHUB_REF_NAME
+  VAR4: "$env.GITHUB_REF_NAME"
+  VAR5: ${{ github.REF_NAME }}
+  VAR6: "${{ github.REF_NAME }}"
+  VAR7: ${{ github.repository }}
+  VAR8: "${{ github.repository }}"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -62,14 +73,24 @@ jobs:
         mkdir -p html_reports/badges
         python ./html_reports/scripts/create_badge.py --text coverage --value `python html_reports/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
 
-    - name: Commit changes
-      run: |
-        git config --global user.email "no-reply@github.com"
-        git config --global user.name "GitHub Actions"
-        rm html_reports/unit_test/.gitignore 
-        git add html_reports/
-        git commit -m "update coverage report"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git push
+    # Deploy to pages branch
+    - name: Deploy
+      uses: s0/git-publish-subdir-action@develop
       env:
+        REPO: self
+        BRANCH: pages
+        FOLDER: html_reports
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TARGET_DIR: ${{ github.REF_NAME }}
+
+    # - name: Commit changes
+    #   run: |
+    #     git config --global user.email "no-reply@github.com"
+    #     git config --global user.name "GitHub Actions"
+    #     rm html_reports/unit_test/.gitignore 
+    #     git add html_reports/
+    #     git commit -m "update coverage report"
+    #     git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+    #     git push
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
