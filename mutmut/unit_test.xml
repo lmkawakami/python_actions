@@ -1,7 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="1" hostname="fv-az612-800" name="pytest" skipped="0" tests="3" time="0.057" timestamp="2023-05-19T06:09:47.773504"><testcase classname="app.tests.test_hipotenusa.TestHipotenusa" name="test_a" time="0.001" /><testcase classname="app.tests.test_hipotenusa.TestHipotenusa" name="test_b" time="0.001" /><testcase classname="app.tests.test_hipotenusa.TestHipotenusa" name="test_c" time="0.001"><failure message="Exception: Erro!">self = &lt;tests.test_hipotenusa.TestHipotenusa testMethod=test_c&gt;
-
-    def test_c(self):
-&gt;       raise Exception("Erro!")
-E       Exception: Erro!
-
-app/tests/test_hipotenusa.py:18: Exception</failure></testcase></testsuite></testsuites>
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="1" failures="0" hostname="fv-az442-293" name="pytest" skipped="0" tests="1" time="0.096" timestamp="2023-05-19T06:15:27.589772"><testcase classname="" name="app.tests.test_hipotenusa" time="0.000"><error message="collection failure">app/tests/test_hipotenusa.py:4: in &lt;module&gt;
+    raise Exception("Erro!")
+E   Exception: Erro!</error></testcase></testsuite></testsuites>
