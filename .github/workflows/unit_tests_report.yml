@@ -81,7 +81,7 @@ jobs:
         FOLDER: html_reports
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CLEAR_GLOBS_FILE: ".clear-target-files"
-        TARGET_DIR: ${{ GITHUB_REF }}
+        TARGET_DIR: ${{ env.GITHUB_REF }}
 
     # - name: Commit changes
     #   run: |
