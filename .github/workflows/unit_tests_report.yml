@@ -11,8 +11,8 @@ env:
   VAR2: "$GITHUB_REF_NAME"
   VAR3: $env.GITHUB_REF_NAME
   VAR4: "$env.GITHUB_REF_NAME"
-  # VAR5: ${{ env.GITHUB_REF_NAME }}
-  # VAR6: "${{ env.GITHUB_REF_NAME }}"
+  VAR5: ${{ github.REF_NAM }}
+  VAR6: "${{ github.REF_NAM }}"
   VAR7: ${{ github.repository }}
   VAR8: "${{ github.repository }}"
 
@@ -85,6 +85,10 @@ jobs:
         echo "$VAR3"
         echo "4:"
         echo "$VAR4"
+        echo "5:"
+        echo "$VAR5"
+        echo "6:"
+        echo "$VAR6"
         echo "7:"
         echo "$VAR7"
         echo "8:"
@@ -114,8 +118,8 @@ jobs:
         LOCAL2: "$GITHUB_REF_NAME"
         LOCAL3: $env.GITHUB_REF_NAME
         LOCAL4: "$env.GITHUB_REF_NAME"
-        LOCAL5: ${{ env.GITHUB_REF_NAME }}
-        LOCAL6: "${{ env.GITHUB_REF_NAME }}"
+        LOCAL5: ${{ github.REF_NAM }}
+        LOCAL6: "${{ github.REF_NAM }}"
         LOCAL7: ${{ github.repository }}
         LOCAL8: "${{ github.repository }}"
 
