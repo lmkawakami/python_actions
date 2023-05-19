@@ -46,12 +46,12 @@ jobs:
     - name: Generate coverage report
       continue-on-error: true
       run: |
-        if python -m pytest ./app/tests --cov-report html:html_reports/unit_test --cov-report xml:html_reports/unit_test/cov.xml --cov=./app/calculadora -vv; then
-          rm html_reports/unit_test/.gitignore
+        if python -m pytest ./app/tests --cov-report html:html_reports/code_coverage --cov-report xml:html_reports/code_coverage/cov.xml --cov=./app/calculadora -vv; then
+          rm html_reports/code_coverage/.gitignore
           echo "enriquecendo relatório de cobertura com output do pytest"
-          echo "<hr><pre style='font-size: small; padding: 1em'>" >> html_reports/unit_test/index.html
-          python -m pytest ./app/tests --cov-report term-missing --cov=./app/calculadora -vv >> html_reports/unit_test/index.html
-          echo "</pre>" >> html_reports/unit_test/index.html
+          echo "<hr><pre style='font-size: small; padding: 1em'>" >> html_reports/code_coverage/index.html
+          python -m pytest ./app/tests --cov-report term-missing --cov=./app/calculadora -vv >> html_reports/code_coverage/index.html
+          echo "</pre>" >> html_reports/code_coverage/index.html
         else
           echo "testes unitários falharam"
         fi
@@ -71,6 +71,22 @@ jobs:
       run: |
         mkdir -p html_reports/badges
         python ./.github/workflows/scripts/create_badge.py --text coverage --value `python .github/workflows/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
+
+    # Creates unit tests run xml
+    - name: Create unit tests run xml
+      run: |
+        cd app
+        mkdir -p code_coverage
+        python -m xmlrunner --output-file "code_coverage/unit_test.xml"
+        cd ..
+        mv app/code_coverage html_reports/code_coverage
+
+    # Adds unit test summary badge
+    - name: Add unit test summary badge
+      run: |
+        mkdir -p html_reports/badges
+        python ./.github/workflows/scripts/create_badge.py --text coverage --value `python .github/workflows/scripts/get_coverage.py` --color orange --file_name ./html_reports/badges/unit_tests_coverage_badge.svg
+        python ./.github/workflows/scripts/create_badge.py --text unit-tests-summary --value "`python .github/workflows/scripts/unit_test_summary.py`" --color white --file_name ./html_reports/badges/unit_tests_summary_badge.svg
 
     # Install mutation tests dependencies
     - name: Install mutation tests dependencies
