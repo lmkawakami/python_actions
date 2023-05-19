@@ -5,17 +5,6 @@ on:
   push:
     branches-ignore: ["pages"]
 
-env:
-  FOO: BAR
-  VAR1: $GITHUB_REF_NAME
-  VAR2: "$GITHUB_REF_NAME"
-  VAR3: $env.GITHUB_REF_NAME
-  VAR4: "$env.GITHUB_REF_NAME"
-  VAR5: ${{ github.REF_NAME }}
-  VAR6: "${{ github.REF_NAME }}"
-  VAR7: ${{ github.repository }}
-  VAR8: "${{ github.repository }}"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,9 +32,9 @@ jobs:
         pip install pytest-html
         pip install requests
 
-    - name: Delete previous report
-      run: |
-        rm -rf html_reports/unit_test
+    # - name: Delete previous report
+    #   run: |
+    #     rm -rf html_reports/unit_test
 
     - name: Generate coverage report
       continue-on-error: true
