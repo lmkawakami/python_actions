@@ -81,11 +81,13 @@ jobs:
         mkdir -p code_coverage
         python -m xmlrunner --output-file "code_coverage/unit_test.xml"
         cd ..
+        ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
         mv app/code_coverage html_reports
 
     # Adds unit test summary badge
     - name: Add unit test summary badge
       run: |
+        ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
         mkdir -p html_reports/badges
         python ./.github/workflows/scripts/create_badge.py --text unit-tests-summary --value "`python .github/workflows/scripts/unit_test_summary.py`" --color white --file_name ./html_reports/badges/unit_tests_summary_badge.svg
 
