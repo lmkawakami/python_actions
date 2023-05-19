@@ -15,6 +15,7 @@ class TestHipotenusa(unittest.TestCase):
         )
 
     def test_c(self):
+        raise Exception("Erro!")
         self.assertEqual(
             hipotenusa(-5, 12),
             13
